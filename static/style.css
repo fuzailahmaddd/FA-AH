@@ -1,0 +1,393 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #101014;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar {
+    width: 240px;
+    background: #17171d;
+    border-right: 1px solid #292930;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.logo {
+    margin-bottom: 45px;
+}
+
+.logo h2 {
+    color: #ff5722;
+    font-size: 27px;
+}
+
+.logo span {
+    color: #999;
+    font-size: 13px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar nav a {
+    color: #aaa;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: #292026;
+    color: #ff7043;
+}
+
+/* Chat History */
+
+.chat-history-list {
+    display: block;
+    margin-top: 5px;
+    max-height: 55vh;
+    overflow-y: auto;
+}
+
+.chat-history-list p {
+    color: #777;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 7px;
+    transition: 0.2s;
+}
+
+.history-item:hover,
+.history-item.active {
+    background: #292026;
+}
+
+.history-open {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    color: #aaa;
+    padding: 9px 5px;
+    text-align: left;
+    font-size: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.history-open:hover,
+.history-item.active .history-open {
+    color: #ff7043;
+}
+
+.history-delete {
+    background: transparent;
+    border: none;
+    color: #777;
+    font-size: 18px;
+    padding: 4px 7px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.history-delete:hover {
+    background: #3a2020;
+    color: #ff5722;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: 20px;
+    color: #777;
+    font-size: 12px;
+}
+
+/* Main Content */
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.topbar {
+    height: 70px;
+    padding: 20px 30px;
+    border-bottom: 1px solid #292930;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.topbar h3 {
+    font-size: 18px;
+}
+
+.topbar span {
+    color: #4caf50;
+    font-size: 13px;
+}
+
+/* Chat Area */
+
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 25px;
+    overflow-y: auto;
+    gap: 15px;
+    min-height: 0;
+}
+
+.welcome {
+    text-align: center;
+    margin: auto;
+}
+
+.welcome h1 {
+    color: #ff5722;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.welcome p {
+    color: #aaa;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Chat Messages */
+
+.user-message {
+    background: #292026;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 12px;
+    max-width: 70%;
+    width: fit-content;
+    align-self: flex-end;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+}
+
+.ai-message {
+    color: white;
+    padding: 10px 0;
+    max-width: 100%;
+    width: fit-content;
+    align-self: flex-start;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+}
+
+/* Attachment Preview */
+
+.upload-status {
+    max-width: 840px;
+    width: calc(100% - 60px);
+    margin: 0 auto;
+    padding: 10px 14px;
+    background: #1c1c24;
+    border: 1px solid #363640;
+    border-left: 3px solid #ff5722;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #ddd;
+    font-size: 13px;
+}
+
+.upload-status[hidden] {
+    display: none;
+}
+
+.attachment-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.attachment-name {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#remove-upload-btn {
+    background: transparent;
+    border: none;
+    color: #888;
+    font-size: 23px;
+    cursor: pointer;
+    padding: 2px 7px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+#remove-upload-btn:hover {
+    background: #3a2020;
+    color: #ff5722;
+}
+
+/* Input Area */
+
+.input-area {
+    display: flex;
+    gap: 12px;
+    padding: 20px 30px;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+
+.input-area input {
+    flex: 1;
+    min-width: 0;
+    background: #1c1c24;
+    border: 1px solid #363640;
+    border-radius: 10px;
+    padding: 16px;
+    color: white;
+    outline: none;
+    font-size: 15px;
+}
+
+.input-area input:focus {
+    border-color: #ff5722;
+}
+
+.input-area button {
+    background: #ff5722;
+    border: none;
+    color: white;
+    padding: 0 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.input-area button:hover {
+    background: #e64a19;
+}
+
+.input-area button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Remove Button */
+
+#remove-upload-btn {
+    background: transparent;
+}
+
+#remove-upload-btn:hover {
+    background: #3a2020;
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    color: #666;
+    font-size: 11px;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+/* Mobile Layout */
+
+@media (max-width: 650px) {
+
+    .sidebar {
+        width: 150px;
+        padding: 15px 10px;
+    }
+
+    .logo h2 {
+        font-size: 22px;
+    }
+
+    .sidebar nav a {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .history-open {
+        font-size: 11px;
+    }
+
+    .history-delete {
+        font-size: 15px;
+        padding: 3px;
+    }
+
+    .topbar {
+        padding: 15px;
+    }
+
+    .chat-area {
+        padding: 15px;
+    }
+
+    .welcome h1 {
+        font-size: 25px;
+    }
+
+    .user-message {
+        max-width: 90%;
+    }
+
+    .upload-status {
+        width: calc(100% - 24px);
+    }
+
+    .input-area {
+        padding: 12px;
+    }
+
+    .input-area button {
+        padding: 0 15px;
+    }
+}

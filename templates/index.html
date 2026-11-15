@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FA-AH | AI Assistant</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h2>FA-AH</h2>
+                <span>AI Assistant</span>
+            </div>
+
+            <nav>
+                <a href="#" class="active" id="new-chat-btn">
+                    New Chat
+                </a>
+
+                <a href="#" id="history-toggle">
+                    Chat History
+                </a>
+
+                <div id="chat-history-list" class="chat-history-list">
+                    <p>Loading history...</p>
+                </div>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p>FA-AH Basic Edition</p>
+            </div>
+
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <h3>AI Assistant</h3>
+                <span>Online</span>
+            </header>
+
+            <section class="chat-area">
+
+                <div class="welcome">
+                    <h1>Welcome to FA-AH</h1>
+                    <p>Your personal AI assistant.</p>
+                    <p>How can I help you today?</p>
+                </div>
+
+            </section>
+
+            <!-- ATTACHMENT PREVIEW -->
+
+            <div id="upload-status" class="upload-status" hidden>
+
+                <span class="attachment-icon">📎</span>
+
+                <span id="upload-filename" class="attachment-name">
+                </span>
+
+                <button
+                    id="remove-upload-btn"
+                    type="button"
+                    title="Remove attachment"
+                >
+                    ×
+                </button>
+
+            </div>
+
+            <!-- CHAT INPUT -->
+
+            <div class="input-area">
+
+                <input
+                    type="file"
+                    id="file-input"
+                    accept=".pdf,.docx,.png,.jpg,.jpeg"
+                    hidden
+                >
+
+                <button id="upload-btn" type="button">
+                    +
+                </button>
+
+                <input
+                    type="text"
+                    id="user-input"
+                    placeholder="Ask FA-AH anything..."
+                    autocomplete="off"
+                >
+
+                <button id="send-btn" type="button">
+                    Send
+                </button>
+
+            </div>
+
+            <footer>
+                FA-AH can make mistakes. Verify important information.
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
